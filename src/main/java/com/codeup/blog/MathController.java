@@ -17,8 +17,7 @@ public class MathController {
         return String.format("The sum of %d and %d is %d", x,y,sum);
 
     }
-
-
+    // a comment some comments
 
     @GetMapping("/increment/{n}")
     public @ResponseBody String increment(@PathVariable int n) {
