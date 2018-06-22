@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="partials/navbar :: head">
+    <meta charset="UTF-8" />
+    <title>Roll Result</title>
+</head>
+<body>
+<nav th:include="partials/navbar :: navbar" />
+<h1>Your Guess: <span th:text="${n}"></span></h1>
+
+<h1>Roll: <span th:text="${droll}"></span></h1>
+<h1>Roll: <span th:text="${result}"></span></h1>
+
+</body>
+</html>
