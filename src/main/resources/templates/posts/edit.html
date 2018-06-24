@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="partials/head :: head">
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body class="bg-dark">
+
+<div class="container bg-secondary text-center border border-dark rounded mt-5">
+
+    <form class="form-group" th:action="@{'/posts/' + ${id} + '/edit'}" th:method="post" th:object="${post}">
+        <h2>Title:</h2>
+        <input class="form-control" th:field="*{title}" />
+        <br />
+        <h2>Body:</h2>
+        <input class="form-control" th:field="*{body}" />
+        <br />
+        <input type="submit" class="btn btn-dark text-light" />
+    </form>
+
+</div>
+
+</body>
+</html>

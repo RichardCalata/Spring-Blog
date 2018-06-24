@@ -21,6 +21,14 @@ public class Post {
 
     public Post(){}
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser (User user) {
+        this.user =user;
+    }
+
     public long getId() { return id; }
 
     public String getTitle() {
@@ -45,5 +53,6 @@ public class Post {
         this.id = id;
         this.title = title;
         this.body = body;
+
     }
 }

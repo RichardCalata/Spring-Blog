@@ -14,8 +14,8 @@ import java.util.List;
 public class PostService {
     private final PostRepository postRepository;
 
-    public PostService(PostRepository postDao){
-        this.postRepository = postDao;
+    public PostService(PostRepository postRepository){
+        this.postRepository = postRepository;
     }
 
 //    private List<Post> posts;
@@ -26,13 +26,25 @@ public class PostService {
     }
 
     public Post findOne(long id) {
-        return postRepository.findOne( id - 1);
+        Post post = postRepository.findOne(id);
+        return post;
     }
 
-    @PostMapping("/create")
-    public void save(@ModelAttribute Post post) {
+
+    public Post save( Post post) {
 
         postRepository.save(post);
+        return post;
 
     }
+
+    public Post deletePost (long id) {
+        postRepository.delete(id);
+        return deletePost(id);
+    }
+
+    public void delete (long id){
+        postRepository.delete(id);
+    }
+
 }
