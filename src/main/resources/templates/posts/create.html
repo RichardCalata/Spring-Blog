@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" >
-<head th:replace="partials/navbar :: head" >
+<head th:include="partials/head :: head" >
 
     <meta charset="UTF-8" />
     <title>Create</title>
 </head>
 <body>
 
-<div class="container">
+<div class="container text-center border rounded mt-5">
     <h1 class="text=center">Create</h1>
-    <form action="/posts/savePost" method="post" th:object="${post}">
+    <form class="form-group" action="/posts/savePost" method="post" th:object="${post}">
 
     <div class="form-group">
         <label for="name">Title</label>
@@ -20,7 +20,7 @@
         <input class="form-control" type="text" id="price"  th:field="*{body}" />
     </div>
 
-    <input class="btn btn-block btn primary" type="submit"/>
+    <input class="btn btn-block btn-success" type="submit"/>
     </form>
 </div>
 

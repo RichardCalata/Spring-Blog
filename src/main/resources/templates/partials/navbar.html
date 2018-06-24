@@ -6,9 +6,17 @@
     <title>Posts</title>
 </head>
 <body>
-<nav th:fragment="navbar" class="navbar navbar-inverse navbar navbar-fixed-top">
-    This is an Awesome Navbar. Now Even more Awesome!
+<nav th:fragment="navbar" class="navbar navbar-inverse text-center mt-5 p-5  border border-dark navbar navbar-fixed-top">
+    <h1 class="navbar text-center mt-5 p-5 border border-dark navbar-inverse navbar navbar-fixed-top">This is an Awesome Navbar. Now Even more Awesome!
+
+    <div class="col-3">
+        <form class="form-group" th:action="@{/posts/create}" method="get">
+            <button type="submit" class="btn btn-success" id="create" name="create">Create</button>
+        </form>
+    </div>
+    </h1>
 </nav>
 
 </body>
 </html>
+

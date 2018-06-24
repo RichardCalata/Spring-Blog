@@ -44,20 +44,21 @@ class PostController {
         return"posts/show";
     }
 
-    @GetMapping("posts/{is}/edit")
+    @GetMapping("posts/{id}/edit")
     public String edit(@PathVariable long id, Model view){
-        view.addAttribute("post", postService.findOne(id));
+        Post post = postService.findOne(id);
+        view.addAttribute("post", post);
         return "/posts/edit";
     }
 
     @RequestMapping("/posts/{id}/edit")
-     public String edit(@PathVariable long id, @Valid Post postDetails){
+     public String update(@PathVariable long id, @Valid Post postDetails){
         Post post = postService.findOne(id);
         post.setTitle(postDetails.getTitle());
         post.setBody(postDetails.getBody());
         postService.save(post);
 
-        return"redirect:posts";
+        return "redirect:/posts";
     }
 
     @DeleteMapping("/posts/{id}/delete")
