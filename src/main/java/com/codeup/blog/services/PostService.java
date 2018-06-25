@@ -3,11 +3,7 @@ package com.codeup.blog.services;
 import com.codeup.blog.models.Post;
 import com.codeup.blog.repositories.PostRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,9 +16,9 @@ public class PostService {
 
 //    private List<Post> posts;
 
-    public List<Post> findAll() {
-       Iterable<Post>posts = postRepository.findAll();
-        return (List<Post>) posts;
+    public Iterable<Post> findAll() {
+
+        return postRepository.findAll();
     }
 
     public Post findOne(long id) {
@@ -46,5 +42,10 @@ public class PostService {
     public void delete (long id){
         postRepository.delete(id);
     }
+
+    public List<Post> search(String searchTerm) {
+        return postRepository.search("%" + searchTerm + "%");
+    }
+
 
 }

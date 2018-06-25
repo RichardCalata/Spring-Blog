@@ -25,11 +25,17 @@ class PostController {
     }
 
     @GetMapping("/posts")
-    public String index(Model view) {
+    public String index(Model view, @RequestParam(name= "search", required = false) String searchTerm) {
 
-        List<Post> posts = postService.findAll();
+        List<Post> posts;
+        if(searchTerm == null){
+            posts = (List<Post>) postService.findAll();
+        } else {
+            posts = postService.search(searchTerm);
+        }
 
         view.addAttribute("posts", posts);
+        view.addAttribute("searchTerm", searchTerm);
 
         return "/posts/index";
     }
@@ -89,6 +95,8 @@ class PostController {
         System.out.println("savePost");
         return "redirect:/posts";
     }
+
+
 
 
 }

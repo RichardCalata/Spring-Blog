@@ -41,6 +41,8 @@ public class User {
     }
 
     public String getEmail() {
+
+        System.out.println(email);
         return email;
     }
 
