@@ -15,7 +15,7 @@
     <div class="p-5 m-2 border border-dark rounded" th:each="post: ${posts}" th:height="auto">
         <ul class="list-unstyled">
             <li class="media">
-                <!--<img class="mr-3" src="http://via.placeholder.com/150x150" alt="Generic placeholder image" />-->
+                <img class="mr-3" src="../../img/img2.jpg" height="225" width="225" alt="Generic placeholder image" />
                 <div class="p-2">
                     <h2 class="text-left ">
                         <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}" />
