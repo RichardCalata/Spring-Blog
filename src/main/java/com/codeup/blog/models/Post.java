@@ -29,6 +29,7 @@ public class Post {
         this.user =user;
     }
 
+
     public long getId() { return id; }
 
     public String getTitle() {

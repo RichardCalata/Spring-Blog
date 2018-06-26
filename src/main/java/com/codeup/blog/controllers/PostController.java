@@ -1,8 +1,10 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
+import com.codeup.blog.models.User;
 import com.codeup.blog.repositories.UserRepository;
 import com.codeup.blog.services.PostService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -49,9 +51,15 @@ class PostController {
 
     @GetMapping("posts/{id}/edit")
     public String edit(@PathVariable long id, Model view){
+
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userRepository.findById(sessionUser.getId());
         Post post = postService.findOne(id);
+        if (post.getUser().getId() == user.getId()){
         view.addAttribute("post", post);
         return "/posts/edit";
+        } else
+            return "redirect:/login";
     }
 
     @RequestMapping("/posts/{id}/edit")
@@ -65,10 +73,16 @@ class PostController {
     }
 
     @DeleteMapping("/posts/{id}/delete")
-    public String deletePost(@PathVariable long id){
-        postService.findOne(id);
-        postService.deletePost(id);
-         return "redirect:/posts";
+    public String deletePost(@PathVariable long id) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userRepository.findById(sessionUser.getId());
+        Post post = postService.findOne(id);
+
+        if (post.getUser().getId() != user.getId()) {
+            return "redirect:/login";
+        } else
+            postService.deletePost(id);
+            return "redirect:/posts";
     }
 
     @PostMapping("posts/{id}/delete")
@@ -90,7 +104,7 @@ class PostController {
     public String save(@ModelAttribute Post post) {
 
         postService.save(post);
-        System.out.println("THis message");
+        System.out.println("This message");
         return "redirect:/posts";
     }
 
