@@ -1,8 +1,6 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
-import com.codeup.blog.models.User;
-import com.codeup.blog.repositories.PostRepository;
 import com.codeup.blog.repositories.UserRepository;
 import com.codeup.blog.services.PostService;
 import org.springframework.stereotype.Controller;
@@ -10,8 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -93,10 +89,8 @@ class PostController {
     @PostMapping("/posts/{id}")
     public String save(@ModelAttribute Post post) {
 
-        User user = userRepository.first();
-        post.setUser(user);
         postService.save(post);
-        System.out.println("savePost");
+        System.out.println("THis message");
         return "redirect:/posts";
     }
 
