@@ -15,7 +15,7 @@ public class DiceRoller {
     }
 
 
-    @GetMapping("/roll-dice/{n}")
+    @GetMapping("roll-dice/{n}")
     public String rollDice(@PathVariable int n, Model model) {
 
         int diceRoll = (int) Math.ceil(Math.random() * 6);

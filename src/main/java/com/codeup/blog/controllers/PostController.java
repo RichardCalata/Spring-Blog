@@ -36,7 +36,7 @@ class PostController {
         view.addAttribute("posts", posts);
         view.addAttribute("searchTerm", searchTerm);
 
-        return "/posts/index";
+        return "posts/index";
     }
 
 
@@ -57,7 +57,7 @@ class PostController {
         Post post = postService.findOne(id);
         if (post.getUser().getId() == user.getId()){
         view.addAttribute("post", post);
-        return "/posts/edit";
+        return "posts/edit";
         } else
             return "redirect:/login";
     }
