@@ -12,6 +12,7 @@
 
     <h1 class="mb-2" th:height="200"> Posts!</h1>
 
+
     <div class="p-5 m-2 border border-dark rounded" th:each="post: ${posts}" th:height="auto">
         <ul class="list-unstyled">
             <li class="media">
@@ -21,23 +22,7 @@
                         <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}" />
                     </h2>
                     <p class="text-justify" th:text="${post.body}"></p>
-                    <div class="row ">
-                        <!--<div class="col-3">-->
-                            <!--<a class="btn btn-success" th:href="@{/posts/{id}/edit(id=${post.id})}">Edit</a>-->
-                        <!--</div>-->
 
-                        <div class="col-3  ">
-                            <form class="form-group" th:action="@{/posts/{id}/edit(id=${post.id})}" method="GET">
-                                <button type="submit" class="btn btn-warning btn-block " id="edit" name="edit">Edit</button>
-                            </form>
-                        </div>
-
-                        <div class="col-3 ">
-                            <form class="form-group" th:action="@{/posts/{id}/delete(id=${post.id})}" method="post">
-                                <button type="submit" class="btn btn-danger btn-block " id="delete" name="delete">Delete</button>
-                            </form>
-                        </div>
-                    </div>
 
 
 

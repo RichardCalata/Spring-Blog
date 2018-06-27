@@ -74,6 +74,8 @@ class PostController {
 
     @DeleteMapping("/posts/{id}/delete")
     public String deletePost(@PathVariable long id) {
+
+
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userRepository.findById(sessionUser.getId());
         Post post = postService.findOne(id);
@@ -88,9 +90,13 @@ class PostController {
     @PostMapping("posts/{id}/delete")
     public String delete(@PathVariable long id){
 
+
+
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userRepository.findById(sessionUser.getId());
         Post post = postService.findOne(id);
+
+        System.out.println(user.getId());
 
         if (post.getUser().getId() != user.getId()) {
             return "redirect:/login";

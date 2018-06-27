@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:include="partials/head :: head">
 
     <meta charset="UTF-8" />
@@ -16,6 +16,22 @@
     <h2> <p th:text="${post.body}"></p></h2>
     <p th:text="${post.user.email}"></p>
     <input type="hidden" name="id" value="${post.id}}"/>
+    <div sec:authorize="isFullyAuthenticated()">
+        <div class="row " >
+
+            <div class="col-3 ">
+                <form class="form-group" th:action="@{/posts/{id}/edit(id=${post.id})}" method="GET">
+                <button type="submit" class="btn btn-warning btn-block " id="edit" name="edit">Edit</button>
+                </form>
+            </div>
+
+            <div class="col-3 ">
+                <form class="form-group" th:action="@{/posts/{id}/delete(id=${post.id})}" method="post">
+                <button type="submit" class="btn btn-danger btn-block " id="delete" name="delete">Delete</button>
+             </form>
+            </div>
+        </div>
+    </div>
 
 </div>
 

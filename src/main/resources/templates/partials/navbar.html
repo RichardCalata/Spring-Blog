@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head th:fragment="head">
     <meta charset="UTF-8" />
@@ -9,19 +9,27 @@
 <nav th:fragment="navbar" class="navbar navbar-inverse text-center mt-5 p-5  border border-dark navbar navbar-fixed-top">
     <h1 class="navbar text-center mt-5 p-5 border border-dark navbar-inverse navbar navbar-fixed-top">This is an Awesome Navbar. Now Even more Awesome!
 
-    <div class="col-3">
-        <form class="form-group" th:action="@{/posts/create}" method="get">
-            <button type="submit" class="btn btn-success" id="create" name="create">Create</button>
-        </form>
-    </div>
+
 
     <div class="row">
-            <form class="col-12">
-                <div class="form-group">
-                    <label for="search">Search</label>
-                    <input class="form-control" id="search" type="text" name="search" th:value="${searchTerm}" />
+        <a href="/login">Login</a>
+        <div sec:authorize="isAuthenticated()">
+            <div class="col-12">
+                <div class=" col-lg-12 text-center">
+                    <form class="form-group" th:action="@{/posts/create}" method="get">
+                        <button type="submit" class="btn btn-success " id="create" name="create">Create</button>
+                    </form>
                 </div>
-            </form>
+            </div>
+                <div class="row">
+                    <form class="col-12">
+                        <div class="form-group">
+                            <label for="search">Search</label>
+                            <input class="form-control" id="search" type="text" name="search" th:value="${searchTerm}" />
+                        </div>
+                    </form>
+                </div>
+            </div>
     </div>
         <div>
             <form th:action="@{/logout}" th:method="post">
