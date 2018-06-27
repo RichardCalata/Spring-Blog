@@ -6,6 +6,8 @@
     <title>Create</title>
 </head>
 <body>
+<nav th:include="partials/navbar :: navbar" >
+</nav>
 <div sec:authorize="isAuthenticated()">
 
     <h1 class="text-center">Create your Post</h1>

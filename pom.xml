@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>blog</name>
-    <description>Project to leaen how springboot works</description>
+    <description>Project to learn how springboot works</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

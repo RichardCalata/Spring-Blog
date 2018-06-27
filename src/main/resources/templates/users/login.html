@@ -5,6 +5,8 @@
     <title>Log In</title>
 </head>
 <body>
+<nav th:include="partials/navbar :: navbar">
+</nav>
 <h1 class="text-center">Log In</h1>
 <div class="text-center" th:if="${param.error}">
     Invalid Username and Password.
