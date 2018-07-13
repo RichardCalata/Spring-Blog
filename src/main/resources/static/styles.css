@@ -1,6 +1,6 @@
 body {
 
-    box-sizing: border-box;
+    /*box-sizing: border-box;*/
     border-color: darkorange;
     color: darkorange;
 
@@ -15,4 +15,14 @@ div {
 .container {
 
 
+}
+
+.nav {
+
+    display: inline-block;
+}
+
+.nav-item{
+
+display: inline-block;
 }

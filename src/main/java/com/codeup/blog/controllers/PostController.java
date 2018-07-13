@@ -122,6 +122,13 @@ class PostController {
         return "redirect:/posts";
     }
 
+    @GetMapping("/stunt")
+    public String stunt(){
+
+
+        return "redirect:/posts";
+    }
+
 
 
 
